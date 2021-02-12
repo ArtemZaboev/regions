@@ -1,0 +1,10 @@
+INSERT INTO `regions` (name,shortName) VALUES ('Москва и Московская обл.','RU-MOS');
+INSERT INTO `regions` (name,shortName) VALUES ('Санкт-Петербург и область', 'RU-SPE');
+INSERT INTO `regions` (name,shortName) VALUES ('Адыгея', 'RU-AD');
+INSERT INTO `regions` (name,shortName) VALUES ('Алтайский край','RU-ALT');
+INSERT INTO `regions` (name,shortName) VALUES ('Амурская обл.','RU-AMU');
+INSERT INTO `regions` (name,shortName) VALUES ('Архангельская обл.','RU-ARK');
+INSERT INTO `regions` (name,shortName) VALUES ('Астраханская обл.','RU-AST');
+INSERT INTO `regions` (name,shortName) VALUES ('Башкортостан(Башкирия)','RU-BA');
+INSERT INTO `regions` (name,shortName) VALUES ('Белгородская обл.','RU-BEL');
+INSERT INTO `regions` (name,shortName) VALUES ('Брянская обл.','RU-BRY');

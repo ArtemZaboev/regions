@@ -19,6 +19,6 @@ public interface RegionMapper {
     @Insert("insert into regions (name,shortName) values (#{name},#{shortName})")
     @Options(useGeneratedKeys = true,keyColumn = "id",keyProperty = "id")
     void saveRegion(Region region);
-
+    @Update("UPDATE regions SET name=#{name}, shortName =#{shortName} WHERE id =#{id}")
     void updateRegion(Region region);
 }
