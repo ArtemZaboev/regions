@@ -27,7 +27,10 @@ public class RegionServiceImpl implements RegionService {
     public Region getRegionById(long id) throws NotFoundException{
         log.info("getting region by id: {}", id);
         Region region=regionMapper.getRegionById(id);
-        if (region==null)throw new NotFoundException("Region not found by id: "+id);
+        if (region==null) {
+            log.error("Region not found by id: {}",id);
+            throw new NotFoundException("Region not found by id: "+id);
+        }
         return region;
     }
 
@@ -35,7 +38,10 @@ public class RegionServiceImpl implements RegionService {
     public List<Region> getRegions() throws NotFoundException {
         log.info("getting all regions");
         List<Region> regions=regionMapper.getRegions();
-        if (regions==null)throw new NotFoundException("No regions found");
+        if (regions==null){
+            log.error("No regions found");
+            throw new NotFoundException("No regions found");
+        }
         return regions;
     }
 
