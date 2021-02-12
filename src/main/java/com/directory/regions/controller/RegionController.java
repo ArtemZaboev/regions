@@ -4,15 +4,12 @@ import com.directory.regions.exception.RegionCreationException;
 import com.directory.regions.exception.RegionNotFoundException;
 import com.directory.regions.model.Region;
 import com.directory.regions.service.RegionServiceImpl;
-import com.sun.deploy.net.HttpResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Slf4j
@@ -29,22 +26,11 @@ public class RegionController {
 
     @GetMapping("{id}")
     public Region getRegionById(@PathVariable("id") long id)  {
-        try {
             return regionService.getRegionById(id);
-        } catch (NotFoundException e) {
-            throw new RegionNotFoundException();
-        }
     }
-
     @GetMapping
     public List<Region> getRegions()  {
-        List<Region> regions= null;
-        try {
-            regions = regionService.getRegions();
-        } catch (NotFoundException e) {
-            throw new RegionNotFoundException();
-        }
-        return regions;
+        return regionService.getRegions();
     }
 
     @DeleteMapping("/delete/{id}")
@@ -56,10 +42,6 @@ public class RegionController {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public void addRegion(@RequestBody Region region) {
-        if (region.getName()==null||region.getShortName()==null){
-            log.info("region creation error");
-            throw new RegionCreationException();
-        }
         regionService.addRegion(region);
 
     }
