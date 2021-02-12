@@ -2,13 +2,17 @@ package com.directory.regions.controller;
 
 import com.directory.regions.model.Region;
 import com.directory.regions.service.RegionServiceImpl;
+import com.sun.deploy.net.HttpResponse;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-@RestController("/api/region")
+@RestController
+@RequestMapping("/api/region")
 public class RegionController {
 
     private final RegionServiceImpl regionService;
@@ -24,7 +28,7 @@ public class RegionController {
     }
 
     @GetMapping
-    public List<Region> getRegions() {
+    public List<Region> getRegions()  {
         List<Region> regions= null;
         try {
             regions = regionService.getRegions();
@@ -34,7 +38,7 @@ public class RegionController {
         return regions;
     }
 
-    @DeleteMapping("/delete{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteRegion(@PathVariable("id") long id) {
         regionService.deleteRegion(id);
